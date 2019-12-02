@@ -7,7 +7,7 @@ addpath('ximu_matlab_library');
 % -------------------------------------------------------------------------
 % Select dataset (comment in/out)
 
-filePath = 'Custom data sets/terra';
+filePath = 'Custom data sets/terraPacketNo';
 startTime = 6;
 stopTime = 26;
 
@@ -36,17 +36,17 @@ clear('xIMUdata');
 % -------------------------------------------------------------------------
 % Manually frame data
 
-startTime = 0;
-stopTime = 10;
-
-indexSel = find(sign(time-startTime)+1, 1) : find(sign(time-stopTime)+1, 1);
-time = time(indexSel);
-gyrX = gyrX(indexSel, :);
-gyrY = gyrY(indexSel, :);
-gyrZ = gyrZ(indexSel, :);
-accX = accX(indexSel, :);
-accY = accY(indexSel, :);
-accZ = accZ(indexSel, :);
+% startTime = 0;
+% stopTime = 10;
+% 
+% indexSel = find(sign(time-startTime)+1, 1) : find(sign(time-stopTime)+1, 1);
+% time = time(indexSel);
+% gyrX = gyrX(indexSel, :);
+% gyrY = gyrY(indexSel, :);
+% gyrZ = gyrZ(indexSel, :);
+% accX = accX(indexSel, :);
+% accY = accY(indexSel, :);
+% accZ = accZ(indexSel, :);
 
 % -------------------------------------------------------------------------
 % Detect stationary periods
@@ -225,7 +225,7 @@ posPlot = [posPlot; [posPlot(end, 1)*onesVector, posPlot(end, 2)*onesVector, pos
 quatPlot = [quatPlot; [quatPlot(end, 1)*onesVector, quatPlot(end, 2)*onesVector, quatPlot(end, 3)*onesVector, quatPlot(end, 4)*onesVector]];
 
 % Create 6 DOF animation
-SamplePlotFreq = 5;
+SamplePlotFreq = 15;
 Spin = 120;
 SixDofAnimation(posPlot, quatern2rotMat(quatPlot), ...
                 'SamplePlotFreq', SamplePlotFreq, 'Trail', 'All', ...
