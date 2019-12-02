@@ -7,7 +7,7 @@ addpath('ximu_matlab_library');
 % -------------------------------------------------------------------------
 % Select dataset (comment in/out)
 
-filePath = 'Custom data sets/acellerotetra';
+filePath = 'Custom data sets/format';
 startTime = 6;
 stopTime = 26;
 
@@ -74,16 +74,16 @@ stationary = acc_magFilt < 0.05;
 % Plot data raw sensor data and stationary periods
 
 figure('Position', [9 39 900 600], 'NumberTitle', 'off', 'Name', 'Sensor Data');
-ax(1) = subplot(2,1,1);
-    hold on;
-    plot(time, gyrX, 'r');
-    plot(time, gyrY, 'g');
-    plot(time, gyrZ, 'b');
-    title('Gyroscope');
-    xlabel('Time (s)');
-    ylabel('Angular velocity (^\circ/s)');
-    legend('X', 'Y', 'Z');
-    hold off;
+ ax(1) = subplot(2,1,1);
+     hold on;
+     plot(time, gyrX, 'r');
+     plot(time, gyrY, 'g');
+     plot(time, gyrZ, 'b');
+     title('Gyroscope');
+     xlabel('Time (s)');
+     ylabel('Angular velocity (^\circ/s)');
+     legend('X', 'Y', 'Z');
+     hold off;
 ax(2) = subplot(2,1,2);
     hold on;
     plot(time, accX, 'r');
@@ -225,7 +225,7 @@ posPlot = [posPlot; [posPlot(end, 1)*onesVector, posPlot(end, 2)*onesVector, pos
 quatPlot = [quatPlot; [quatPlot(end, 1)*onesVector, quatPlot(end, 2)*onesVector, quatPlot(end, 3)*onesVector, quatPlot(end, 4)*onesVector]];
 
 % Create 6 DOF animation
-SamplePlotFreq = 4;
+SamplePlotFreq = 5;
 Spin = 120;
 SixDofAnimation(posPlot, quatern2rotMat(quatPlot), ...
                 'SamplePlotFreq', SamplePlotFreq, 'Trail', 'All', ...
