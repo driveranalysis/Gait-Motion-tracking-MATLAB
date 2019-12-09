@@ -125,7 +125,6 @@ end
 
 % -------------------------------------------------------------------------
 % Compute translational accelerations
-
 % Rotate body accelerations to Earth frame
 acc = quaternRotate([accX accY accZ], quaternConj(quat));
 
