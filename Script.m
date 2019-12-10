@@ -1,5 +1,5 @@
 clear;
-close all;
+% close all;
 clc;
 addpath('Quaternions');
 addpath('ximu_matlab_library');
@@ -8,8 +8,8 @@ addpath('ximu_matlab_library');
 % Select dataset (comment in/out)
 
 filePath = 'Custom data sets/terraPacketNo';
-startTime = 6;
-stopTime = 26;
+startTime = 100000;
+stopTime = 1000000000;
 
 % filePath = 'Datasets/stairsAndCorridor';
 % startTime = 5;
@@ -24,7 +24,8 @@ stopTime = 26;
 
 samplePeriod = 1/256;
 xIMUdata = xIMUdataClass(filePath, 'InertialMagneticSampleRate', 1/samplePeriod);
-time = xIMUdata.CalInertialAndMagneticData.Time;
+
+% time = xIMUdata.CalInertialAndMagneticData.Time;
 gyrX = xIMUdata.CalInertialAndMagneticData.Gyroscope.X;
 gyrY = xIMUdata.CalInertialAndMagneticData.Gyroscope.Y;
 gyrZ = xIMUdata.CalInertialAndMagneticData.Gyroscope.Z;
@@ -37,16 +38,28 @@ clear('xIMUdata');
 % Manually frame data
 
 % startTime = 0;
-% stopTime = 10;
+% stopTime = 2000;
 % 
 % indexSel = find(sign(time-startTime)+1, 1) : find(sign(time-stopTime)+1, 1);
-% time = time(indexSel);
-% gyrX = gyrX(indexSel, :);
-% gyrY = gyrY(indexSel, :);
-% gyrZ = gyrZ(indexSel, :);
-% accX = accX(indexSel, :);
-% accY = accY(indexSel, :);
-% accZ = accZ(indexSel, :);
+%in minutes
+t=6
+time = (1:0.02:t*60)';
+gyrX = gyrX(1:length(time));
+gyrY = gyrY(1:length(time));
+gyrZ = gyrZ(1:length(time));
+accX = accX(1:length(time));
+accY = accY(1:length(time));
+accZ = accZ(1:length(time));
+
+% time = (1:1:20000)'
+% gyrX = gyrX(1:20000);
+% gyrY = gyrY(1:20000);
+% gyrZ = gyrZ(1:20000);
+% accX = accX(1:20000);
+% accY = accY(1:20000);
+% accZ = accZ(1:20000);
+
+% time = (1:1:length(gyrX))';
 
 % -------------------------------------------------------------------------
 % Detect stationary periods
